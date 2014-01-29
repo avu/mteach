@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		17AE005AAB645A1C6368FB03 /* SpellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE0F79268C71A0C6D707E5 /* SpellViewController.m */; };
+		17AE007F913236C50FD5C17D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17AE0194C2BE6BAB76783263 /* Images.xcassets */; };
+		17AE00A98F2A8996957D33FD /* ui.html in Resources */ = {isa = PBXBuildFile; fileRef = 17AE0BCB2948B8FF30E31194 /* ui.html */; };
+		17AE01022EB695CAB531D607 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE033515171D1A423C4BB6 /* Foundation.framework */; };
+		17AE022FF0544B8970F363BB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17AE040EFF33343DF9C3EE09 /* InfoPlist.strings */; };
+		17AE0233EF08FA7A0131A16F /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17AE072FCCF891D3EDDFE1EC /* Main_iPad.storyboard */; };
+		17AE0273091E2CBF0F1DC378 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE0F2E8D558997AA7B2082 /* UIKit.framework */; };
+		17AE036D18AA9D4653059C95 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17AE066FC868BFF3CEBB73FA /* InfoPlist.strings */; };
+		17AE037294128444C8AEFBB6 /* WebServiceDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE07862D2A4342A09E0640 /* WebServiceDelegate.m */; };
+		17AE03D4C8BCF0CD93C1C9EC /* SpellcheckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE048ECB4DB29C28702631 /* SpellcheckTests.m */; };
+		17AE07D7FD3B9C61F8004881 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17AE0BD11041A6CEC605E122 /* Main_iPhone.storyboard */; };
+		17AE0898B44C544D9F9637A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE033515171D1A423C4BB6 /* Foundation.framework */; };
+		17AE0A25BBDF4FE994250F3F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE0A2A94C7BD3627917463 /* CoreGraphics.framework */; };
+		17AE0C2050E7A361A3959ACF /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE022BF621055FD7B0740C /* WebService.m */; };
+		17AE0E2CA454AC04E284F7EE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE088FE5B33EE27897DA56 /* XCTest.framework */; };
+		17AE0E2D33AEA13E90065B59 /* SpellAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE0AB63A0E944793B26341 /* SpellAppDelegate.m */; };
+		17AE0EE871F30F41D2F45819 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE0F2E8D558997AA7B2082 /* UIKit.framework */; };
+		17AE0F7C31C3EE81A356FF1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE04FA3064613344D54824 /* main.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		17AE00E00B405B540FC2DA62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17AE0674031ADA6813F98F1C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17AE097D5F8EF160C685EAF1;
+			remoteInfo = Spellcheck;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		17AE0092A3BDDCC808DE6A79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		17AE0194C2BE6BAB76783263 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		17AE020E4FE98E13BCDD0D13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		17AE022BF621055FD7B0740C /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebService.m; sourceTree = "<group>"; };
+		17AE025F07D2347D976C43EB /* Spellcheck-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spellcheck-Prefix.pch"; sourceTree = "<group>"; };
+		17AE033515171D1A423C4BB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		17AE03668DFBA9AA531B0C88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		17AE0412FA3F9D78037E7433 /* SpellcheckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpellcheckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17AE048ECB4DB29C28702631 /* SpellcheckTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpellcheckTests.m; sourceTree = "<group>"; };
+		17AE04D1668E92AEAF8BEA05 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebService.h; sourceTree = "<group>"; };
+		17AE04FA3064613344D54824 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		17AE05ADE903E23A73F0143D /* Spellcheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spellcheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17AE0728793761373DEED440 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		17AE07862D2A4342A09E0640 /* WebServiceDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceDelegate.m; sourceTree = "<group>"; };
+		17AE07E88FE6AF7357C534D7 /* Spellcheck-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "Spellcheck-Info.plist"; sourceTree = "<group>"; };
+		17AE088FE5B33EE27897DA56 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		17AE0A284DD05CDA6F6BBDBA /* SpellAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpellAppDelegate.h; sourceTree = "<group>"; };
+		17AE0A2A94C7BD3627917463 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		17AE0AB63A0E944793B26341 /* SpellAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpellAppDelegate.m; sourceTree = "<group>"; };
+		17AE0AFC20A14ED22B3C9833 /* WebServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceDelegate.h; sourceTree = "<group>"; };
+		17AE0BCB2948B8FF30E31194 /* ui.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ui.html; sourceTree = "<group>"; };
+		17AE0EC41D8BAD329E129053 /* SpellViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpellViewController.h; sourceTree = "<group>"; };
+		17AE0EF2AFB89A24C44001AE /* SpellcheckTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "SpellcheckTests-Info.plist"; sourceTree = "<group>"; };
+		17AE0F2E8D558997AA7B2082 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		17AE0F79268C71A0C6D707E5 /* SpellViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpellViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		17AE07979392F4690A2CB8F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17AE01022EB695CAB531D607 /* Foundation.framework in Frameworks */,
+				17AE0A25BBDF4FE994250F3F /* CoreGraphics.framework in Frameworks */,
+				17AE0EE871F30F41D2F45819 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17AE09C6672E0992B7B8895F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17AE0E2CA454AC04E284F7EE /* XCTest.framework in Frameworks */,
+				17AE0898B44C544D9F9637A1 /* Foundation.framework in Frameworks */,
+				17AE0273091E2CBF0F1DC378 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		17AE0086962CC2E7DB2EEDA4 /* SpellcheckTests */ = {
+			isa = PBXGroup;
+			children = (
+				17AE086D268F1EE8FB0C425E /* Supporting Files */,
+				17AE048ECB4DB29C28702631 /* SpellcheckTests.m */,
+			);
+			path = SpellcheckTests;
+			sourceTree = "<group>";
+		};
+		17AE03F2AD76E8370F45DD2D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				17AE07E88FE6AF7357C534D7 /* Spellcheck-Info.plist */,
+				17AE066FC868BFF3CEBB73FA /* InfoPlist.strings */,
+				17AE04FA3064613344D54824 /* main.m */,
+				17AE025F07D2347D976C43EB /* Spellcheck-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		17AE0478D406C44F842F0377 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				17AE033515171D1A423C4BB6 /* Foundation.framework */,
+				17AE0A2A94C7BD3627917463 /* CoreGraphics.framework */,
+				17AE0F2E8D558997AA7B2082 /* UIKit.framework */,
+				17AE088FE5B33EE27897DA56 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		17AE07B7DA88962C15585E4B /* Spellcheck */ = {
+			isa = PBXGroup;
+			children = (
+				17AE03F2AD76E8370F45DD2D /* Supporting Files */,
+				17AE0A284DD05CDA6F6BBDBA /* SpellAppDelegate.h */,
+				17AE0AB63A0E944793B26341 /* SpellAppDelegate.m */,
+				17AE0194C2BE6BAB76783263 /* Images.xcassets */,
+				17AE0BD11041A6CEC605E122 /* Main_iPhone.storyboard */,
+				17AE072FCCF891D3EDDFE1EC /* Main_iPad.storyboard */,
+				17AE0EC41D8BAD329E129053 /* SpellViewController.h */,
+				17AE0F79268C71A0C6D707E5 /* SpellViewController.m */,
+				17AE0BCB2948B8FF30E31194 /* ui.html */,
+				17AE07862D2A4342A09E0640 /* WebServiceDelegate.m */,
+				17AE0AFC20A14ED22B3C9833 /* WebServiceDelegate.h */,
+				17AE022BF621055FD7B0740C /* WebService.m */,
+				17AE04D1668E92AEAF8BEA05 /* WebService.h */,
+			);
+			path = Spellcheck;
+			sourceTree = "<group>";
+		};
+		17AE086D268F1EE8FB0C425E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				17AE0EF2AFB89A24C44001AE /* SpellcheckTests-Info.plist */,
+				17AE040EFF33343DF9C3EE09 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		17AE09C009767311A9DE068B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17AE05ADE903E23A73F0143D /* Spellcheck.app */,
+				17AE0412FA3F9D78037E7433 /* SpellcheckTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		17AE0AD3A97A27B30BBB768E = {
+			isa = PBXGroup;
+			children = (
+				17AE09C009767311A9DE068B /* Products */,
+				17AE0478D406C44F842F0377 /* Frameworks */,
+				17AE07B7DA88962C15585E4B /* Spellcheck */,
+				17AE0086962CC2E7DB2EEDA4 /* SpellcheckTests */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		17AE07DE1B83F0F42D000B9B /* SpellcheckTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17AE04EE2C222AEB01085241 /* Build configuration list for PBXNativeTarget "SpellcheckTests" */;
+			buildPhases = (
+				17AE0F5FC63657CD74442467 /* Sources */,
+				17AE09C6672E0992B7B8895F /* Frameworks */,
+				17AE04502E923FD56D691A5B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17AE0F49442B8C5F16936DC0 /* PBXTargetDependency */,
+			);
+			name = SpellcheckTests;
+			productName = SpellcheckTests;
+			productReference = 17AE0412FA3F9D78037E7433 /* SpellcheckTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		17AE097D5F8EF160C685EAF1 /* Spellcheck */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17AE06029AAE11F1A2C4ED33 /* Build configuration list for PBXNativeTarget "Spellcheck" */;
+			buildPhases = (
+				17AE02B637B6510CCBF735FD /* Sources */,
+				17AE07979392F4690A2CB8F0 /* Frameworks */,
+				17AE0B58E7824573FCBC3F32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Spellcheck;
+			productName = Spellcheck;
+			productReference = 17AE05ADE903E23A73F0143D /* Spellcheck.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		17AE0674031ADA6813F98F1C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = jetbrains;
+			};
+			buildConfigurationList = 17AE07661CB1DCFF445465D9 /* Build configuration list for PBXProject "Spellcheck" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 17AE0AD3A97A27B30BBB768E;
+			productRefGroup = 17AE09C009767311A9DE068B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				17AE097D5F8EF160C685EAF1 /* Spellcheck */,
+				17AE07DE1B83F0F42D000B9B /* SpellcheckTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		17AE04502E923FD56D691A5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17AE022FF0544B8970F363BB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17AE0B58E7824573FCBC3F32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17AE036D18AA9D4653059C95 /* InfoPlist.strings in Resources */,
+				17AE007F913236C50FD5C17D /* Images.xcassets in Resources */,
+				17AE07D7FD3B9C61F8004881 /* Main_iPhone.storyboard in Resources */,
+				17AE0233EF08FA7A0131A16F /* Main_iPad.storyboard in Resources */,
+				17AE00A98F2A8996957D33FD /* ui.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		17AE02B637B6510CCBF735FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17AE0F7C31C3EE81A356FF1A /* main.m in Sources */,
+				17AE0E2D33AEA13E90065B59 /* SpellAppDelegate.m in Sources */,
+				17AE005AAB645A1C6368FB03 /* SpellViewController.m in Sources */,
+				17AE037294128444C8AEFBB6 /* WebServiceDelegate.m in Sources */,
+				17AE0C2050E7A361A3959ACF /* WebService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17AE0F5FC63657CD74442467 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17AE03D4C8BCF0CD93C1C9EC /* SpellcheckTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		17AE0F49442B8C5F16936DC0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17AE097D5F8EF160C685EAF1 /* Spellcheck */;
+			targetProxy = 17AE00E00B405B540FC2DA62 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		17AE040EFF33343DF9C3EE09 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17AE0728793761373DEED440 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		17AE066FC868BFF3CEBB73FA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17AE03668DFBA9AA531B0C88 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		17AE072FCCF891D3EDDFE1EC /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17AE020E4FE98E13BCDD0D13 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		17AE0BD11041A6CEC605E122 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17AE0092A3BDDCC808DE6A79 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		17AE0399DF962D4C1387CB5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		17AE04B7EC9417E90D810793 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spellcheck/Spellcheck-Prefix.pch";
+				INFOPLIST_FILE = "Spellcheck/Spellcheck-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		17AE05E1DC274A32F7CAB7E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spellcheck/Spellcheck-Prefix.pch";
+				INFOPLIST_FILE = "SpellcheckTests/SpellcheckTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		17AE08D89DBAC42116864CDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spellcheck/Spellcheck-Prefix.pch";
+				INFOPLIST_FILE = "Spellcheck/Spellcheck-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		17AE0C010299404013194CA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spellcheck/Spellcheck-Prefix.pch";
+				INFOPLIST_FILE = "SpellcheckTests/SpellcheckTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		17AE0F75CE492F80994576E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		17AE04EE2C222AEB01085241 /* Build configuration list for PBXNativeTarget "SpellcheckTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17AE0C010299404013194CA7 /* Release */,
+				17AE05E1DC274A32F7CAB7E0 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		17AE06029AAE11F1A2C4ED33 /* Build configuration list for PBXNativeTarget "Spellcheck" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17AE08D89DBAC42116864CDB /* Release */,
+				17AE04B7EC9417E90D810793 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		17AE07661CB1DCFF445465D9 /* Build configuration list for PBXProject "Spellcheck" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17AE0399DF962D4C1387CB5E /* Release */,
+				17AE0F75CE492F80994576E6 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 17AE0674031ADA6813F98F1C /* Project object */;
+}
