@@ -21,11 +21,10 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -138,7 +137,7 @@ public class ChooseSourceActivity extends Activity {
       try {
         final String s = writeSources(mySources);
         prefs.edit().putString(SOURCES_PREFERENCE_KEY, s).commit();
-      } catch (IOException e) {
+      } catch (JSONException e) {
         Log.e(LOG_TAG, "", e);
       }
     }
@@ -151,7 +150,7 @@ public class ChooseSourceActivity extends Activity {
       if (!sourcesStr.isEmpty()) {
         try {
           infos = readSources(sourcesStr);
-        } catch (IOException e) {
+        } catch (JSONException e) {
           Log.e(LOG_TAG, "", e);
         }
       }
@@ -164,37 +163,24 @@ public class ChooseSourceActivity extends Activity {
       return myListViewAdapter.getSelection();
     }
 
-    private static String writeSources(List<RssFeedInfo> sources) throws IOException {
-      final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-      final DataOutputStream output = new DataOutputStream(baos);
+    private static String writeSources(List<RssFeedInfo> sources) throws JSONException {
+      final List<JSONObject> objects = new ArrayList<JSONObject>();
 
-      try {
-        output.writeInt(sources.size());
-
-        for (RssFeedInfo source : sources) {
-          source.write(output);
-        }
+      for (RssFeedInfo source : sources) {
+        objects.add(source.toJsonObject());
       }
-      finally {
-        output.close();
-      }
-      return new String(baos.toByteArray(), "UTF-8");
+      return new JSONArray(objects).toString();
     }
 
-    private static List<RssFeedInfo> readSources(String s) throws IOException {
-      final DataInputStream input = new DataInputStream(new ByteArrayInputStream(s.getBytes("UTF-8")));
+    private static List<RssFeedInfo> readSources(String s) throws JSONException {
+      final JSONArray jsonArray = new JSONArray(s);
+      final int count = jsonArray.length();
+      final List<RssFeedInfo> result = new ArrayList<RssFeedInfo>(count);
 
-      try {
-        final int count = input.readInt();
-        final List<RssFeedInfo> result = new ArrayList<RssFeedInfo>(count);
-
-        for (int i = 0; i < count; i++) {
-          result.add(new RssFeedInfo(input));
-        }
-        return result;
-      } finally {
-        input.close();
+      for (int i = 0; i < count; i++) {
+        result.add(new RssFeedInfo(jsonArray.getJSONObject(i)));
       }
+      return result;
     }
 
     public void doAddSource(String url, RssFeed rssFeed) {

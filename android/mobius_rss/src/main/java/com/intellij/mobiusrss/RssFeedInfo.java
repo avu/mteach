@@ -1,13 +1,16 @@
 package com.intellij.mobiusrss;
 
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * @author Eugene.Kudelevsky
  */
 public class RssFeedInfo {
+  private static final String DESCRIPTION = "description";
+  private static final String URL = "url";
+  private static final String TITLE = "title";
+
   private final String myUrl;
   private final String myTitle;
   private final String myDescription;
@@ -18,10 +21,10 @@ public class RssFeedInfo {
     myDescription = description;
   }
 
-  public RssFeedInfo(DataInput input) throws IOException {
-    myTitle = input.readUTF();
-    myUrl = input.readUTF();
-    myDescription = input.readUTF();
+  public RssFeedInfo(JSONObject jsonObject) throws JSONException {
+    myTitle = jsonObject.optString(TITLE);
+    myUrl = jsonObject.optString(URL);
+    myDescription = jsonObject.optString(DESCRIPTION);
   }
 
   public String getTitle() {
@@ -32,10 +35,12 @@ public class RssFeedInfo {
     return myUrl;
   }
 
-  public void write(DataOutput output) throws IOException {
-    output.writeUTF(myTitle != null ? myTitle : "");
-    output.writeUTF(myUrl != null ? myUrl : "");
-    output.writeUTF(myDescription != null ? myDescription : "");
+  public JSONObject toJsonObject() throws JSONException {
+    final JSONObject result = new JSONObject();
+    result.put(TITLE, myTitle);
+    result.put(URL, myUrl);
+    result.put(DESCRIPTION, myDescription);
+    return result;
   }
 
   public String getDescription() {

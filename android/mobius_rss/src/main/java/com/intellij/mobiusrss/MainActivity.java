@@ -23,8 +23,7 @@ public class MainActivity extends Activity {
     else {
       myFragment = (MainFragment) getFragmentManager().findFragmentById(R.id.container);
     }
-    final String url = getIntent().getStringExtra(URL_EXTRA);
-    myFragment.loadRss(url);
+    myFragment.loadRss(getIntent().getStringExtra(URL_EXTRA));
   }
 
   public static Intent createIntent(Context context, String url) {
