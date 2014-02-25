@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:id="@+id/add_source"
+    android:icon="@drawable/ic_add_source_action"
+    android:showAsAction="ifRoom"
+    android:title="@string/add_source_title" />
+  <item
+    android:id="@+id/remove_source"
+    android:icon="@drawable/ic_remove_action"
+    android:showAsAction="ifRoom"
+    android:title="@string/remove_source_title" />
+</menu>

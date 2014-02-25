@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MobiusRss.iml" filepath="$PROJECT_DIR$/MobiusRss.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mobius_rss/mobius_rss.iml" filepath="$PROJECT_DIR$/mobius_rss/mobius_rss.iml" />
+    </modules>
+  </component>
+</project>
+
