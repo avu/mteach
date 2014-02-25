@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MobiusRss.iml" filepath="$PROJECT_DIR$/MobiusRss.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
       <module fileurl="file://$PROJECT_DIR$/mobius_rss/mobius_rss.iml" filepath="$PROJECT_DIR$/mobius_rss/mobius_rss.iml" />
     </modules>
   </component>
