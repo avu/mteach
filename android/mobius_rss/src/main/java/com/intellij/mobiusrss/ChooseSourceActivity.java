@@ -103,7 +103,7 @@ public class ChooseSourceActivity extends Activity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
           final RssFeedInfo info = mySources.get(position);
-          startActivity(MainActivity.createIntent(getActivity(), info.getUrl()));
+          startActivity(FeedActivity.createIntent(getActivity(), info.getUrl()));
         }
       });
 

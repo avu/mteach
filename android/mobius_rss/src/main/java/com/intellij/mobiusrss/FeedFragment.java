@@ -17,13 +17,7 @@ import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -37,21 +31,21 @@ import nl.matshofman.saxrssreader.RssItem;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainFragment extends Fragment {
+public class FeedFragment extends Fragment {
   private static final String READ_NEWS_KEY = "read_news";
-  private static final String LOG_TAG = MainFragment.class.getName();
+  private static final String LOG_TAG = FeedFragment.class.getName();
 
   private ProgressBar myProgressBar;
   private ListView myListView;
-  private MainFragment.MyListAdapter myListAdapter;
+  private FeedFragment.MyListAdapter myListAdapter;
 
-  public MainFragment() {
+  public FeedFragment() {
   }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    final View view = inflater.inflate(R.layout.fragment_main, container, false);
+    final View view = inflater.inflate(R.layout.fragment_feed, container, false);
     //noinspection ConstantConditions
     myProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
     myListView = (ListView) view.findViewById(R.id.listView);

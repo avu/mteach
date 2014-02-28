@@ -54,29 +54,6 @@ public class SourcesListAdapter extends BaseAdapter {
 
     if (view != null) {
       final RssFeedInfo info = myInfos.get(position);
-
-      /*view.setOnLongClickListener(new View.OnLongClickListener() {
-        @Override
-        public boolean onLongClick(View v) {
-          final boolean selected = !v.isSelected();
-          v.setSelected(selected);
-
-          if (selected) {
-            mySelection.add(info);
-          }
-          else {
-            mySelection.remove(info);
-          }
-          return true;
-        }
-      });
-
-      view.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          myContext.startActivity(MainActivity.createIntent(myContext, info.getUrl()));
-        }
-      });*/
       final TextView titleView = (TextView) view.findViewById(R.id.titleView);
       titleView.setText(info.getTitle());
       final TextView descriptionView = (TextView) view.findViewById(R.id.descriptionView);

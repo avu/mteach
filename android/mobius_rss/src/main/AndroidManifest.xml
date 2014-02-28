@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.intellij.mobiusrss.MainActivity" />
+        <activity android:name=".FeedActivity" />
         <activity
             android:name="com.intellij.mobiusrss.ChooseSourceActivity"
             android:label="@string/app_name" >
