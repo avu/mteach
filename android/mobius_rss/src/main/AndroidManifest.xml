@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.intellij.mobiusrss.RssItemActivity"
+            android:name=".NoteActivity"
             android:label="@string/title_activity_rss_item" >
         </activity>
     </application>
