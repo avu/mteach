@@ -21,7 +21,6 @@ import nl.matshofman.saxrssreader.RssFeed;
 public class SourcesListAdapter extends BaseAdapter {
   private final Context myContext;
   private final List<RssFeedInfo> myInfos;
-  private final Set<RssFeedInfo> mySelection = new HashSet<RssFeedInfo>();
 
   public SourcesListAdapter(Context context, List<RssFeedInfo> infos) {
     myContext = context;
@@ -41,10 +40,6 @@ public class SourcesListAdapter extends BaseAdapter {
   @Override
   public long getItemId(int position) {
     return position;
-  }
-
-  public Set<RssFeedInfo> getSelection() {
-    return mySelection;
   }
 
   @Override

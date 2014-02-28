@@ -25,6 +25,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -87,6 +88,7 @@ public class ChooseSourceActivity extends Activity {
     private ListView myListView;
     private ArrayList<RssFeedInfo> mySources = new ArrayList<RssFeedInfo>();
     private SourcesListAdapter myListViewAdapter;
+    private final Set<RssFeedInfo> mySelection = new HashSet<RssFeedInfo>();
 
     public PlaceholderFragment() {
     }
@@ -113,9 +115,9 @@ public class ChooseSourceActivity extends Activity {
           final RssFeedInfo info = mySources.get(position);
 
           if (selected) {
-            myListViewAdapter.getSelection().add(info);
+            mySelection.add(info);
           } else {
-            myListViewAdapter.getSelection().remove(info);
+            mySelection.remove(info);
           }
           return true;
         }
@@ -157,7 +159,7 @@ public class ChooseSourceActivity extends Activity {
     }
 
     public Set<RssFeedInfo> getSelectedSources() {
-      return myListViewAdapter.getSelection();
+      return mySelection;
     }
 
     public void doAddSource(String url, RssFeed rssFeed) {
