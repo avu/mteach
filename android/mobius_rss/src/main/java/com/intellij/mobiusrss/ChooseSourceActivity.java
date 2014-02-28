@@ -21,9 +21,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -134,7 +132,7 @@ public class ChooseSourceActivity extends Activity {
     private void saveSources() {
       final SharedPreferences prefs = getActivity().getPreferences(MODE_PRIVATE);
       try {
-        final String s = writeSources(mySources);
+        final String s = RssFeedInfo.writeListTo(mySources);
         prefs.edit().putString(SOURCES_PREFERENCE_KEY, s).commit();
       } catch (JSONException e) {
         Log.e(LOG_TAG, "", e);
@@ -148,7 +146,7 @@ public class ChooseSourceActivity extends Activity {
 
       if (!sourcesStr.isEmpty()) {
         try {
-          infos = readSources(sourcesStr);
+          infos = RssFeedInfo.readListFrom(sourcesStr);
         } catch (JSONException e) {
           Log.e(LOG_TAG, "", e);
         }
@@ -160,26 +158,6 @@ public class ChooseSourceActivity extends Activity {
 
     public Set<RssFeedInfo> getSelectedSources() {
       return myListViewAdapter.getSelection();
-    }
-
-    private static String writeSources(List<RssFeedInfo> sources) throws JSONException {
-      final List<JSONObject> objects = new ArrayList<JSONObject>();
-
-      for (RssFeedInfo source : sources) {
-        objects.add(source.toJsonObject());
-      }
-      return new JSONArray(objects).toString();
-    }
-
-    private static List<RssFeedInfo> readSources(String s) throws JSONException {
-      final JSONArray jsonArray = new JSONArray(s);
-      final int count = jsonArray.length();
-      final List<RssFeedInfo> result = new ArrayList<RssFeedInfo>(count);
-
-      for (int i = 0; i < count; i++) {
-        result.add(new RssFeedInfo(jsonArray.getJSONObject(i)));
-      }
-      return result;
     }
 
     public void doAddSource(String url, RssFeed rssFeed) {

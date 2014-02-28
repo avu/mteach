@@ -1,7 +1,11 @@
 package com.intellij.mobiusrss;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Eugene.Kudelevsky
@@ -45,5 +49,25 @@ public class RssFeedInfo {
 
   public String getDescription() {
     return myDescription;
+  }
+
+  public static List<RssFeedInfo> readListFrom(String s) throws JSONException {
+    final JSONArray jsonArray = new JSONArray(s);
+    final int count = jsonArray.length();
+    final List<RssFeedInfo> result = new ArrayList<RssFeedInfo>(count);
+
+    for (int i = 0; i < count; i++) {
+      result.add(new RssFeedInfo(jsonArray.getJSONObject(i)));
+    }
+    return result;
+  }
+
+  public static String writeListTo(List<RssFeedInfo> sources) throws JSONException {
+    final List<JSONObject> objects = new ArrayList<JSONObject>();
+
+    for (RssFeedInfo source : sources) {
+      objects.add(source.toJsonObject());
+    }
+    return new JSONArray(objects).toString();
   }
 }
