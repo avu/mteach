@@ -97,7 +97,7 @@ public class ChooseSourceActivity extends Activity {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
       final View view = inflater.inflate(R.layout.fragment_choose_source, container, false);
-      myListView = (ListView) view.findViewById(R.id.listView);
+      myListView = (ListView) view.findViewById(R.id.sourcesListView);
 
       myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         @Override
@@ -116,8 +116,7 @@ public class ChooseSourceActivity extends Activity {
 
           if (selected) {
             myListViewAdapter.getSelection().add(info);
-          }
-          else {
+          } else {
             myListViewAdapter.getSelection().remove(info);
           }
           return true;
