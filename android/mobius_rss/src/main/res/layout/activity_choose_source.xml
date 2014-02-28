@@ -9,7 +9,7 @@
   tools:context="com.intellij.mobiusrss.ChooseSourceActivity">
 
   <ListView
-    android:id="@+id/listView"
+    android:id="@+id/sourcesListView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"

@@ -45,7 +45,7 @@ public class FeedActivity extends Activity {
     setContentView(R.layout.activity_feed);
 
     myProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-    myListView = (ListView) findViewById(R.id.listView);
+    myListView = (ListView) findViewById(R.id.feedListView);
 
     myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @SuppressWarnings("ConstantConditions")
