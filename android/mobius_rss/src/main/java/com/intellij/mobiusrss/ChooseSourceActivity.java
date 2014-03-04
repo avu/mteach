@@ -6,10 +6,8 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,22 +16,15 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import org.json.JSONException;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import nl.matshofman.saxrssreader.RssFeed;
 
 public class ChooseSourceActivity extends Activity {
-  private static final String SOURCES_PREFERENCE_KEY = "sources";
   private static final String ADD_SOURCE_DIALOG_TAG = "add_source";
 
-  private ListView myListView;
   private ArrayList<RssFeedInfo> mySources = new ArrayList<RssFeedInfo>();
   private SourcesListAdapter myListViewAdapter;
   private final Set<RssFeedInfo> mySelection = new HashSet<RssFeedInfo>();
@@ -43,16 +34,16 @@ public class ChooseSourceActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_choose_source);
 
-    myListView = (ListView) findViewById(R.id.sourcesListView);
+    final ListView listView = (ListView) findViewById(R.id.sourcesListView);
 
-    myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         final RssFeedInfo info = mySources.get(position);
         startActivity(FeedActivity.createIntent(ChooseSourceActivity.this, info.getUrl()));
       }
     });
-    myListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+    listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
       @Override
       public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
         final boolean selected = !view.isSelected();
@@ -67,7 +58,9 @@ public class ChooseSourceActivity extends Activity {
         return true;
       }
     });
-    loadSources();
+    mySources = new ArrayList<RssFeedInfo>(PreferenceUtil.doLoadSources(this));
+    myListViewAdapter = new SourcesListAdapter(this, mySources);
+    listView.setAdapter(myListViewAdapter);
   }
 
   @Override
@@ -98,30 +91,6 @@ public class ChooseSourceActivity extends Activity {
     new MyRssFeedLoadingTask(url).execute();
   }
 
-  private void saveSources() {
-    final String s = RssFeedInfo.writeListTo(mySources);
-    getPreferences(MODE_PRIVATE).edit().putString(SOURCES_PREFERENCE_KEY, s).commit();
-  }
-
-  private void loadSources() {
-    final String sourcesStr = getPreferences(MODE_PRIVATE).getString(SOURCES_PREFERENCE_KEY, "");
-    List<RssFeedInfo> infos;
-
-    if (!sourcesStr.isEmpty()) {
-      infos = RssFeedInfo.readListFrom(sourcesStr);
-    }
-    else {
-      infos = Arrays.asList(
-          new RssFeedInfo("http://news.google.ru/news?pz=1&cf=all&ned=ru_ru&hl=ru&output=rss",
-              "Google News", "news.google.com"),
-          new RssFeedInfo("https://developer.apple.com/news/rss/news.rss",
-              "Apple Dev News", "News for developers"));
-    }
-    mySources = new ArrayList<RssFeedInfo>(infos);
-    myListViewAdapter = new SourcesListAdapter(this, mySources);
-    myListView.setAdapter(myListViewAdapter);
-  }
-
   public Set<RssFeedInfo> getSelectedSources() {
     return mySelection;
   }
@@ -129,13 +98,13 @@ public class ChooseSourceActivity extends Activity {
   public void doAddSource(String url, RssFeed rssFeed) {
     mySources.add(new RssFeedInfo(url, rssFeed.getTitle(), rssFeed.getDescription()));
     myListViewAdapter.notifyDataSetChanged();
-    saveSources();
+    PreferenceUtil.doSaveSources(this, mySources);
   }
 
   public void doRemoveSelectedSources() {
     mySources.removeAll(getSelectedSources());
     myListViewAdapter.notifyDataSetChanged();
-    saveSources();
+    PreferenceUtil.doSaveSources(this, mySources);
   }
 
   public static class AddSourceDialogFragment extends DialogFragment {
