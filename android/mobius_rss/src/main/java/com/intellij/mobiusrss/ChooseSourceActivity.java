@@ -30,7 +30,6 @@ import java.util.Set;
 import nl.matshofman.saxrssreader.RssFeed;
 
 public class ChooseSourceActivity extends Activity {
-  private static final String LOG_TAG = ChooseSourceActivity.class.getName();
   private static final String SOURCES_PREFERENCE_KEY = "sources";
   private static final String ADD_SOURCE_DIALOG_TAG = "add_source";
 
@@ -100,26 +99,16 @@ public class ChooseSourceActivity extends Activity {
   }
 
   private void saveSources() {
-    final SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-    try {
-      final String s = RssFeedInfo.writeListTo(mySources);
-      prefs.edit().putString(SOURCES_PREFERENCE_KEY, s).commit();
-    } catch (JSONException e) {
-      Log.e(LOG_TAG, "", e);
-    }
+    final String s = RssFeedInfo.writeListTo(mySources);
+    getPreferences(MODE_PRIVATE).edit().putString(SOURCES_PREFERENCE_KEY, s).commit();
   }
 
   private void loadSources() {
-    final SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-    final String sourcesStr = prefs.getString(SOURCES_PREFERENCE_KEY, "");
-    List<RssFeedInfo> infos = Collections.emptyList();
+    final String sourcesStr = getPreferences(MODE_PRIVATE).getString(SOURCES_PREFERENCE_KEY, "");
+    List<RssFeedInfo> infos;
 
     if (!sourcesStr.isEmpty()) {
-      try {
-        infos = RssFeedInfo.readListFrom(sourcesStr);
-      } catch (JSONException e) {
-        Log.e(LOG_TAG, "", e);
-      }
+      infos = RssFeedInfo.readListFrom(sourcesStr);
     }
     else {
       infos = Arrays.asList(
