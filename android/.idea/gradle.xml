@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/mobius_rss" />
+            <option value="$PROJECT_DIR$/mobius_rss_initial" />
           </set>
         </option>
       </GradleProjectSettings>

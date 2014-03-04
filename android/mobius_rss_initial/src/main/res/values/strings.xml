@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Mobius RSS Reader</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="url">URL:</string>
+    <string name="add_source_title">Add</string>
+    <string name="remove_source_title">Remove</string>
+    <string name="input_url">Please input URL</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="loading_rss_feed_progress">Loading RSS feed</string>
+    <string name="cannot_load_rss_feed_error">Cannot loag RSS feed</string>
+    <string name="title_activity_rss_item">RssItemActivity</string>
+
+</resources>

@@ -1,1 +1,1 @@
-include ':mobius_rss'
+include ':mobius_rss', ':mobius_rss_initial'

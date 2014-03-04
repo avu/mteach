@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/MobiusRss.iml" filepath="$PROJECT_DIR$/MobiusRss.iml" />
       <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
       <module fileurl="file://$PROJECT_DIR$/mobius_rss/mobius_rss.iml" filepath="$PROJECT_DIR$/mobius_rss/mobius_rss.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mobius_rss_initial/mobius_rss_initial.iml" filepath="$PROJECT_DIR$/mobius_rss_initial/mobius_rss_initial.iml" />
     </modules>
   </component>
 </project>
