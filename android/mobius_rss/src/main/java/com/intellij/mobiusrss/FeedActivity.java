@@ -19,6 +19,7 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -168,11 +169,15 @@ public class FeedActivity extends Activity {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
       final RssItem rssItem = myItems.get(position);
+      final Date date = rssItem.getPubDate();
       final View view = LayoutInflater.from(FeedActivity.this).inflate(
           R.layout.rss_item, parent, false);
       final TextView titleView = (TextView) view.findViewById(R.id.rssItemTitleView);
       titleView.setText(rssItem.getTitle());
-      titleView.setTypeface(myReadSet.contains(rssItem.getPubDate()) ? Typeface.DEFAULT : Typeface.DEFAULT_BOLD);
+      titleView.setTypeface(myReadSet.contains(date) ? Typeface.DEFAULT : Typeface.DEFAULT_BOLD);
+
+      final TextView dateView = (TextView) view.findViewById(R.id.rssItemDateView);
+      dateView.setText(DateFormat.getDateInstance().format(date));
       return view;
     }
   }

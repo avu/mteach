@@ -5,4 +5,9 @@
     <!-- Customize your theme here. -->
   </style>
 
+  <style name="FeedDate">
+    <item name="android:textSize">15sp</item>
+    <item name="android:textColor">#ff7e94ff</item>
+  </style>
+
 </resources>

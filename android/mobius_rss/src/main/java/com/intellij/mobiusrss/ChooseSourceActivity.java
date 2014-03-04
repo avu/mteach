@@ -21,6 +21,7 @@ import android.widget.ListView;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -119,6 +120,13 @@ public class ChooseSourceActivity extends Activity {
       } catch (JSONException e) {
         Log.e(LOG_TAG, "", e);
       }
+    }
+    else {
+      infos = Arrays.asList(
+          new RssFeedInfo("http://news.google.ru/news?pz=1&cf=all&ned=ru_ru&hl=ru&output=rss",
+              "Google News", "news.google.com"),
+          new RssFeedInfo("https://developer.apple.com/news/rss/news.rss",
+              "Apple Dev News", "News for developers"));
     }
     mySources = new ArrayList<RssFeedInfo>(infos);
     myListViewAdapter = new SourcesListAdapter(this, mySources);
