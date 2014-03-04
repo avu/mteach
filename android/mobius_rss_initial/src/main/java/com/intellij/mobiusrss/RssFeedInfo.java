@@ -1,5 +1,7 @@
 package com.intellij.mobiusrss;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,6 +13,8 @@ import java.util.List;
  * @author Eugene.Kudelevsky
  */
 public class RssFeedInfo {
+  private static final String LOG_TAG = RssFeedInfo.class.getName();
+
   private static final String DESCRIPTION = "description";
   private static final String URL = "url";
   private static final String TITLE = "title";
@@ -51,23 +55,33 @@ public class RssFeedInfo {
     return myDescription;
   }
 
-  public static List<RssFeedInfo> readListFrom(String s) throws JSONException {
-    final JSONArray jsonArray = new JSONArray(s);
-    final int count = jsonArray.length();
-    final List<RssFeedInfo> result = new ArrayList<RssFeedInfo>(count);
+  public static List<RssFeedInfo> readListFrom(String s) {
+    try {
+      final JSONArray jsonArray = new JSONArray(s);
+      final int count = jsonArray.length();
+      final List<RssFeedInfo> result = new ArrayList<RssFeedInfo>(count);
 
-    for (int i = 0; i < count; i++) {
-      result.add(new RssFeedInfo(jsonArray.getJSONObject(i)));
+      for (int i = 0; i < count; i++) {
+        result.add(new RssFeedInfo(jsonArray.getJSONObject(i)));
+      }
+      return result;
+    } catch (JSONException e) {
+      Log.e(LOG_TAG, "", e);
+      return null;
     }
-    return result;
   }
 
-  public static String writeListTo(List<RssFeedInfo> sources) throws JSONException {
+  public static String writeListTo(List<RssFeedInfo> sources) {
     final List<JSONObject> objects = new ArrayList<JSONObject>();
 
-    for (RssFeedInfo source : sources) {
-      objects.add(source.toJsonObject());
+    try {
+      for (RssFeedInfo source : sources) {
+        objects.add(source.toJsonObject());
+      }
+      return new JSONArray(objects).toString();
+    } catch (JSONException e) {
+      Log.e(LOG_TAG, "", e);
+      return null;
     }
-    return new JSONArray(objects).toString();
   }
 }
