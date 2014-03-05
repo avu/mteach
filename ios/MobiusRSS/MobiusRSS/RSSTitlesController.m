@@ -11,13 +11,7 @@
 #import "RSSService.h"
 
 @interface RSSTitlesController () {
-    NSXMLParser *parser;
     NSMutableArray *feeds;
-    NSMutableDictionary *item;
-    NSMutableString *title;
-    NSMutableString *link;
-    NSMutableString *description;
-    NSString *element;
     RSSService *rss;
 }
 
@@ -46,7 +40,6 @@
     feeds = [[NSMutableArray alloc] init];
     [rss newsURL:url News:feeds];
     [self.tableView reloadData];
-
 }
 
 #pragma mark - Table view data source
@@ -65,8 +58,15 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-
+    cell.textLabel.font = [UIFont systemFontOfSize:10];
     cell.textLabel.text = [[feeds objectAtIndex:indexPath.row] objectForKey: @"title"];
+
+    cell.textLabel.text =[NSString stringWithFormat:@"%@ %@", [[feeds objectAtIndex:indexPath.row] objectForKey:@"pubDate"],
+    [[feeds objectAtIndex:indexPath.row] objectForKey:@"title"]];
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.textLabel.numberOfLines = 0;
+
+
     return cell;
 
 }

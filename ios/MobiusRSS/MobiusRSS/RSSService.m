@@ -14,6 +14,7 @@
     NSMutableString *description;
     NSMutableString *link;
     NSMutableArray *feeds;
+    NSMutableString *date;
     BOOL parseComplete;
     BOOL parseFailed;
     NSMutableDictionary *info;
@@ -30,6 +31,7 @@
             title = [[NSMutableString alloc] init];
             link = [[NSMutableString alloc] init];
             description = [[NSMutableString alloc] init];
+            date = [[NSMutableString alloc] init];
         }
     }
     else if (info) {
@@ -43,13 +45,17 @@
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    if (!parseComplete) {
         if ([element isEqualToString:@"title"]) {
             [title appendString:string];
         } else if ([element isEqualToString:@"link"]) {
             [link appendString:string];
         } else if ([element isEqualToString:@"description"]) {
             [description appendString:string];
+        } else if ([element isEqualToString:@"pubDate"]) {
+            [date appendString:string];
         }
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
@@ -59,7 +65,7 @@
             [item setObject:title forKey:@"title"];
             [item setObject:link forKey:@"link"];
             [item setObject:description forKey:@"description"];
-
+            [item setObject:date forKey:@"pubDate"];
             [feeds addObject:[item copy]];
 
         }

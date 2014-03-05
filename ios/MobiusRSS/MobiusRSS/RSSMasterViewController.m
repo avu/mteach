@@ -11,6 +11,7 @@
 #import "RSSDetailViewController.h"
 #import "RSSTitlesController.h"
 #import "RSSService.h"
+#import "Notify.h"
 
 @interface RSSMasterViewController () {
     NSMutableArray *_rssURLS;
@@ -104,7 +105,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 
-
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.textLabel.text = _rssTitles[indexPath.row];
 
     return cell;

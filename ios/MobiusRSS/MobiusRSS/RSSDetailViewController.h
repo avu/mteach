@@ -14,9 +14,5 @@
 
 @property NSDictionary *item;
 
-- (void) load;
-
-@property(nonatomic) IBOutlet UITextView *myOutput;
-
 - (void)reload;
 @end

@@ -10,6 +10,8 @@
 
 @interface RSSDetailViewController ()
 - (void)configureView;
+
+@property(nonatomic) IBOutlet UIWebView *webView;
 @end
 
 @implementation RSSDetailViewController
@@ -31,6 +33,10 @@
 
 - (void)reload {
     NSLog(@"%@", [item valueForKey:@"description"]);
-    self.myOutput.text = [item valueForKey:@"description"];
+
+    NSString *html = [NSString stringWithFormat:@"<html><body>%@<body></html>", [item valueForKey:@"description"]];
+
+    [self.webView loadHTMLString:html baseURL:nil];
+
 }
 @end
