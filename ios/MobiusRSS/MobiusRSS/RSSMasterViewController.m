@@ -10,9 +10,12 @@
 
 #import "RSSDetailViewController.h"
 #import "RSSTitlesController.h"
+#import "RSSService.h"
 
 @interface RSSMasterViewController () {
-    NSMutableArray *_objects;
+    NSMutableArray *_rssURLS;
+    NSMutableArray *_rssTitles;
+    RSSService *_rssService;
 }
 @end
 
@@ -25,6 +28,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Mobius RSS Reader", @"Master");
+        _rssService = [[RSSService alloc] init];
     }
     return self;
 }
@@ -32,13 +36,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-//    self.navigationItem.rightBarButtonItem = addButton;
-    _objects = [[NSMutableArray alloc] init];
-    [_objects insertObject:@"http://images.apple.com/main/rss/hotnews/hotnews.rss" atIndex:0];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    self.navigationItem.rightBarButtonItem = addButton;
+    [self addFeed:@"http://images.apple.com/main/rss/hotnews/hotnews.rss"];
+
+}
+
+- (void)addFeed:(NSString *)url {
+    if (!_rssURLS) {
+        _rssURLS = [[NSMutableArray alloc] init];
+        _rssTitles = [[NSMutableArray alloc] init];
+    }
+    [_rssURLS insertObject:[NSURL URLWithString:url] atIndex:0];
+    NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
+    [_rssService feedInfoURL:[_rssURLS objectAtIndex:0] Info:info];
+    [_rssTitles insertObject:[info valueForKey:@"title"] atIndex:0];
+}
+
+- (void)removeFeed:(NSUInteger)num {
+    [_rssURLS removeObjectAtIndex:num];
+    [_rssTitles removeObjectAtIndex:num];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,10 +74,7 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)text {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[[alert textFieldAtIndex:0] text] atIndex:0];
+    [self addFeed:[[alert textFieldAtIndex:0] text]];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -73,7 +89,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return _rssURLS.count;
 
 }
 
@@ -89,7 +105,7 @@
     }
 
 
-    cell.textLabel.text = _objects[indexPath.row];
+    cell.textLabel.text = _rssTitles[indexPath.row];
 
     return cell;
 }
@@ -103,7 +119,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        [self removeFeed:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -117,7 +133,7 @@
     if (!self.rssTitlesController) {
         self.rssTitlesController = [[RSSTitlesController alloc] initWithNibName:@"RSSTitlesController" bundle:nil];
     }
-    NSString *object = _objects[indexPath.row];
+    NSString *object = _rssURLS[indexPath.row];
     self.rssTitlesController.detailItem = object;
     [self.navigationController pushViewController:self.rssTitlesController animated:YES];
     [self.rssTitlesController reload];

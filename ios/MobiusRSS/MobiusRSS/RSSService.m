@@ -24,18 +24,25 @@
 
     element = elementName;
 
-    if ([element isEqualToString:@"item"]) {
-
-        item    = [[NSMutableDictionary alloc] init];
-        title   = [[NSMutableString alloc] init];
-        link    = [[NSMutableString alloc] init];
-        description = [[NSMutableString alloc] init];
+    if (feeds) {
+        if ([element isEqualToString:@"item"]) {
+            item = [[NSMutableDictionary alloc] init];
+            title = [[NSMutableString alloc] init];
+            link = [[NSMutableString alloc] init];
+            description = [[NSMutableString alloc] init];
+        }
+    }
+    else if (info) {
+        if ([element isEqualToString:@"channel"]) {
+            title = [[NSMutableString alloc] init];
+            description = [[NSMutableString alloc] init];
+            link = [[NSMutableString alloc] init];
+        }
     }
 
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-    if (feeds) {
         if ([element isEqualToString:@"title"]) {
             [title appendString:string];
         } else if ([element isEqualToString:@"link"]) {
@@ -43,8 +50,6 @@
         } else if ([element isEqualToString:@"description"]) {
             [description appendString:string];
         }
-    }
-
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
@@ -58,6 +63,12 @@
             [feeds addObject:[item copy]];
 
         }
+    }
+    else if (info) {
+        [info setObject:title forKey:@"title"];
+        [info setObject:link forKey:@"link"];
+        [info setObject:description forKey:@"description"];
+        parseComplete = YES;
     }
 }
 
@@ -74,7 +85,7 @@
     parseComplete = NO;
     parseFailed = NO;
     [parser parse];
-    while (!parseComplete || !parseFailed) {
+    while (!parseComplete && !parseFailed) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
                                  beforeDate:[NSDate distantFuture]];
     }
@@ -88,8 +99,8 @@
     feeds = dictionary;
     parseComplete = NO;
     parseFailed = NO;
-    [parser parse];
-    while (!parseComplete || !parseFailed) {
+    [parser performSelectorInBackground:@selector(parse) withObject:nil];
+    while (!parseComplete && !parseFailed) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
                                  beforeDate:[NSDate distantFuture]];
     }

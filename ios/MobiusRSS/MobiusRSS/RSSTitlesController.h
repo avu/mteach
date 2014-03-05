@@ -12,7 +12,7 @@
 
 @interface RSSTitlesController : UITableViewController <NSXMLParserDelegate>
 
-@property NSString *detailItem;
+@property NSURL *detailItem;
 @property(nonatomic, strong) RSSDetailViewController *rssDetailController;
 
 - (void)reload;
