@@ -9,12 +9,9 @@
 #import "RSSMasterViewController.h"
 
 #import "RSSTitlesController.h"
-#import "RSSService.h"
 #import "Config.h"
 
-@interface RSSMasterViewController () {
-    RSSService *_rssService;
-}
+@interface RSSMasterViewController ()
 @end
 
 @implementation RSSMasterViewController {
@@ -27,7 +24,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Mobius RSS Reader", @"Master");
-        _rssService = [[RSSService alloc] init];
     }
     return self;
 }
