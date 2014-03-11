@@ -43,25 +43,10 @@
     self.navigationItem.rightBarButtonItem = addButton;
 }
 
-- (BOOL)addFeed:(NSString *)url {
-    Config *cfg = [Config instance];
-    NSMutableArray *items = cfg.items;
-    NSMutableDictionary *elem = [NSMutableDictionary new];
-    [elem setObject:url forKey:@"url"];
-    NSMutableDictionary *info = [NSMutableDictionary new];
-    BOOL res = [_rssService feedInfoURL:url Info:info];
-    if (!res) {
-        return NO;
-    }
-    [elem setObject:[info valueForKey:@"title"] forKey:@"title"];
-    [items insertObject:elem atIndex:0];
-    [cfg write];
-    return YES;
-}
-
 - (void)removeFeed:(NSUInteger)num {
     Config *cfg = [Config instance];
     [cfg.items removeObjectAtIndex:num];
+    [cfg write];
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,7 +72,7 @@
     _activityIndicatorView.center = CGPointMake(size.width/2.0, size.height/2.0);
     [self.view.superview addSubview:_activityIndicatorView];
     [_activityIndicatorView startAnimating];
-    if (![self addFeed:[[alert textFieldAtIndex:0] text]]) {
+    if (![[Config instance] addFeed:[[alert textFieldAtIndex:0] text]]) {
         alert = [[UIAlertView alloc] initWithTitle:@"RSS Feed" message:@"Cannot add rss feed" delegate:nil
                                  cancelButtonTitle:@"OK" otherButtonTitles:nil];
         alert.alertViewStyle = UIAlertViewStyleDefault;
@@ -155,21 +140,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 
     [activityIndicatorView startAnimating];
-    cell.accessoryType = UITableViewCellAccessoryNone;
     cell.accessoryView = activityIndicatorView;
 
     dispatch_queue_t loadQueue = dispatch_queue_create("Load Queue",NULL);
 
     dispatch_async(loadQueue, ^{
-        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
         [self.rssTitlesController reload];
 
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.navigationController pushViewController:self.rssTitlesController animated:YES];
             cell.accessoryView = nil;
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         });
-
     });
 }
 

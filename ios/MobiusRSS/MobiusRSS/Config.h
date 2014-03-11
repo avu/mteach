@@ -15,4 +15,5 @@
 -(void)write;
 -(void)load;
 
+- (BOOL)addFeed:(NSString *)url;
 @end

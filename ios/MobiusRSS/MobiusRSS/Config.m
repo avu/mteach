@@ -5,12 +5,14 @@
 
 #import "Config.h"
 #import "PListService.h"
+#import "RSSService.h"
 
 
 @implementation Config {
     NSString *_configPath;
     NSMutableDictionary *_values;
 
+    RSSService *_rssService;
 }
 
 + (Config *)instance {
@@ -29,6 +31,7 @@
     self = [super init];
     if (self) {
         _configPath = configPath;
+        _rssService = [[RSSService alloc] init];
         [self load];
     }
 
@@ -53,6 +56,21 @@
     }
     _values = [NSMutableDictionary dictionary];
     [_values setObject:[NSMutableArray new] forKey:@"items"];
+}
+
+- (BOOL)addFeed:(NSString *)url {
+    NSMutableArray *items = self.items;
+    NSMutableDictionary *elem = [NSMutableDictionary new];
+    [elem setObject:url forKey:@"url"];
+    NSMutableDictionary *info = [NSMutableDictionary new];
+    BOOL res = [_rssService feedInfoURL:url Info:info];
+    if (!res) {
+        return NO;
+    }
+    [elem setObject:[info valueForKey:@"title"] forKey:@"title"];
+    [items insertObject:elem atIndex:0];
+    [self write];
+    return YES;
 }
 
 @end
