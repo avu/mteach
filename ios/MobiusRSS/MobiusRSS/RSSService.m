@@ -86,9 +86,9 @@
     parseFailed = YES;
 }
 
-- (BOOL)feedInfoURL:(NSURL *)url Info:(NSMutableDictionary *)dictionary {
+- (BOOL)feedInfoURL:(NSString *)url Info:(NSMutableDictionary *)dictionary {
     NSError *error = nil;
-    NSMutableURLRequest *requestXML = [[NSMutableURLRequest alloc] initWithURL:url];
+    NSMutableURLRequest *requestXML = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString: url]];
     NSData *data = [NSURLConnection sendSynchronousRequest:requestXML returningResponse:nil error:&error];
     if (data == nil) {
         return NO;
@@ -108,14 +108,15 @@
     return parseComplete;
 }
 
-- (BOOL)newsURL:(NSURL *)url News:(NSMutableArray *)dictionary {
+- (BOOL)newsURL:(NSString *)url News:(NSMutableArray *)dictionary {
     NSError *error = nil;
-    NSMutableURLRequest *requestXML = [[NSMutableURLRequest alloc] initWithURL:url];
+    NSURL *nsUrl = [NSURL URLWithString:url];
+    NSMutableURLRequest *requestXML = [[NSMutableURLRequest alloc] initWithURL:nsUrl];
     NSData *data = [NSURLConnection sendSynchronousRequest:requestXML returningResponse:nil error:&error];
     if (data == nil) {
         return NO;
     }
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:nsUrl];
     [parser setDelegate:self];
     info = nil;
     feeds = dictionary;

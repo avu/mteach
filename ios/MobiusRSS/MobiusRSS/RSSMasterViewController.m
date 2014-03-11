@@ -46,11 +46,10 @@
 - (BOOL)addFeed:(NSString *)url {
     Config *cfg = [Config instance];
     NSMutableArray *items = cfg.items;
-    NSURL *nsUrl = [NSURL URLWithString:url];
     NSMutableDictionary *elem = [NSMutableDictionary new];
     [elem setObject:url forKey:@"url"];
     NSMutableDictionary *info = [NSMutableDictionary new];
-    BOOL res = [_rssService feedInfoURL:nsUrl Info:info];
+    BOOL res = [_rssService feedInfoURL:url Info:info];
     if (!res) {
         return NO;
     }
@@ -149,9 +148,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     if (!self.rssTitlesController) {
         self.rssTitlesController = [[RSSTitlesController alloc] initWithNibName:@"RSSTitlesController" bundle:nil];
     }
-    NSURL *url = [NSURL URLWithString:
-    [[Config instance].items[(NSUInteger) indexPath.row] valueForKey:@"url"]];
-    self.rssTitlesController.detailItem = url;
+    self.rssTitlesController.detailItem = [[Config instance].items[(NSUInteger) indexPath.row] valueForKey:@"url"];
 
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc]

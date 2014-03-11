@@ -9,7 +9,7 @@
 @interface RSSService : NSObject <NSXMLParserDelegate> {
 }
 
--(BOOL)feedInfoURL:(NSURL *)url Info:(NSMutableDictionary *)dictionary;
--(BOOL)newsURL:(NSURL *)url News:(NSMutableArray *)dictionary;
+-(BOOL)feedInfoURL:(NSString *)url Info:(NSMutableDictionary *)dictionary;
+-(BOOL)newsURL:(NSString *)url News:(NSMutableArray *)dictionary;
 
 @end

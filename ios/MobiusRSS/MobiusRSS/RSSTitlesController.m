@@ -37,9 +37,8 @@
 }
 
 - (void)reload {
-    NSURL *url = self.detailItem;
     feeds = [[NSMutableArray alloc] init];
-    [rss newsURL:url News:feeds];
+    [rss newsURL:self.detailItem News:feeds];
     [self.tableView reloadData];
 }
 
