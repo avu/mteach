@@ -6,7 +6,7 @@
 #import "RSSService.h"
 
 
-@implementation RSSService {
+@implementation RSSService  {
 
     NSString *element;
     NSMutableDictionary *item;
@@ -108,7 +108,7 @@
     return parseComplete;
 }
 
-- (BOOL)newsURL:(NSURL *)url News:(NSMutableDictionary *)dictionary {
+- (BOOL)newsURL:(NSURL *)url News:(NSMutableArray *)dictionary {
     NSError *error = nil;
     NSMutableURLRequest *requestXML = [[NSMutableURLRequest alloc] initWithURL:url];
     NSData *data = [NSURLConnection sendSynchronousRequest:requestXML returningResponse:nil error:&error];

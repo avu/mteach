@@ -9,7 +9,6 @@
 #import "RSSDetailViewController.h"
 
 @interface RSSDetailViewController ()
-- (void)configureView;
 
 @property(nonatomic) IBOutlet UIWebView *webView;
 @end
@@ -17,8 +16,7 @@
 @implementation RSSDetailViewController
 @synthesize item;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 }
 
@@ -27,8 +25,7 @@
     [self reload];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Detail", @"Detail");
@@ -37,11 +34,7 @@
 }
 
 - (void)reload {
-    NSLog(@"%@", [item valueForKey:@"description"]);
-
     NSString *html = [NSString stringWithFormat:@"<html><body>%@<body></html>", [item valueForKey:@"description"]];
-
     [self.webView loadHTMLString:html baseURL:nil];
-
 }
 @end

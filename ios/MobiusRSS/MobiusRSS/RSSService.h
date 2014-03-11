@@ -6,10 +6,10 @@
 #import <Foundation/Foundation.h>
 
 
-@interface RSSService : NSObject {
+@interface RSSService : NSObject <NSXMLParserDelegate> {
 }
 
 -(BOOL)feedInfoURL:(NSURL *)url Info:(NSMutableDictionary *)dictionary;
--(BOOL)newsURL:(NSURL *)url News:(NSMutableDictionary *)dictionary;
+-(BOOL)newsURL:(NSURL *)url News:(NSMutableArray *)dictionary;
 
 @end

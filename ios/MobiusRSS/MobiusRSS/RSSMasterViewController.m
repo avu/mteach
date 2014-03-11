@@ -13,15 +13,13 @@
 #import "Config.h"
 
 @interface RSSMasterViewController () {
-//    NSMutableArray *_rssURLS;
-//    NSMutableArray *_rssTitles;
     RSSService *_rssService;
 }
 @end
 
 @implementation RSSMasterViewController {
     UIAlertView *alert;
-    UIActivityIndicatorView *activity;
+    UIActivityIndicatorView *_activityIndicatorView;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,16 +39,8 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                target:self
                                                                                action:@selector(insertNewObject:)];
-    UIActivityIndicatorView *av = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [av startAnimating];
 
     self.navigationItem.rightBarButtonItem = addButton;
-//    [self.navigationItem.titleView addSubview:av];
-
-
-
-    //[self addFeed:@"http://images.apple.com/main/rss/hotnews/hotnews.rss"];
-
 }
 
 - (BOOL)addFeed:(NSString *)url {
@@ -78,37 +68,37 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)insertNewObject:(id)sender
 {
+
     alert = [[UIAlertView alloc] initWithTitle:@"RSS Feed" message:@"Input rss feed" delegate:self                                          cancelButtonTitle:@"Done" otherButtonTitles:nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     [alert show];
+
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)text {
-    [alert dismissWithClickedButtonIndex:0 animated:NO];
-    activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [self.view addSubview: activity];
-    activity.center = CGPointMake(240,160);
-    [activity startAnimating];
-    if (![self addFeed:[[alert textFieldAtIndex:0] text]]) {
-        [activity stopAnimating];
-        [activity removeFromSuperview];
 
+    [alert dismissWithClickedButtonIndex:0 animated:NO];
+
+    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    CGSize size = self.view.superview.frame.size;
+    _activityIndicatorView.center = CGPointMake(size.width/2.0, size.height/2.0);
+    [self.view.superview addSubview:_activityIndicatorView];
+    [_activityIndicatorView startAnimating];
+    if (![self addFeed:[[alert textFieldAtIndex:0] text]]) {
         alert = [[UIAlertView alloc] initWithTitle:@"RSS Feed" message:@"Cannot add rss feed" delegate:nil
                                  cancelButtonTitle:@"OK" otherButtonTitles:nil];
         alert.alertViewStyle = UIAlertViewStyleDefault;
         [alert show];
+        [_activityIndicatorView removeFromSuperview];
         return;
     }
-    [activity stopAnimating];
-    [activity removeFromSuperview];
-
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [_activityIndicatorView removeFromSuperview];
 }
 
 #pragma mark - Table View
@@ -124,7 +114,6 @@
     return [Config instance].items.count;
 }
 
-// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -133,9 +122,6 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        UIActivityIndicatorView *av = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//        [av startAnimating];
-//        cell.accessoryView = av;
     }
 
     cell.textLabel.font = [UIFont systemFontOfSize:14];
@@ -148,15 +134,13 @@
     return YES;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self removeFeed:(NSUInteger) indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
-
 }
 
 
@@ -168,9 +152,28 @@
     NSURL *url = [NSURL URLWithString:
     [[Config instance].items[(NSUInteger) indexPath.row] valueForKey:@"url"]];
     self.rssTitlesController.detailItem = url;
-    [self.navigationController pushViewController:self.rssTitlesController animated:YES];
 
-    [self.rssTitlesController reload];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc]
+            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+
+    [activityIndicatorView startAnimating];
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.accessoryView = activityIndicatorView;
+
+    dispatch_queue_t loadQueue = dispatch_queue_create("Load Queue",NULL);
+
+    dispatch_async(loadQueue, ^{
+        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+        [self.rssTitlesController reload];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController pushViewController:self.rssTitlesController animated:YES];
+            cell.accessoryView = nil;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        });
+
+    });
 }
 
 @end
