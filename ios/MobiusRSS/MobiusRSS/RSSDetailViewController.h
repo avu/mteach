@@ -10,8 +10,6 @@
 
 @interface RSSDetailViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
-
 @property NSDictionary *item;
 
 - (void)reload;

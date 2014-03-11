@@ -11,7 +11,7 @@
 @class RSSDetailViewController;
 @class RSSTitlesController;
 
-@interface RSSMasterViewController : UITableViewController
+@interface RSSMasterViewController : UITableViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) RSSTitlesController *rssTitlesController;
 

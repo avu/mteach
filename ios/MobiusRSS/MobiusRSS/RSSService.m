@@ -82,9 +82,19 @@
     parseComplete = YES;
 }
 
+- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
+    parseFailed = YES;
+}
 
 - (BOOL)feedInfoURL:(NSURL *)url Info:(NSMutableDictionary *)dictionary {
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    NSError *error = nil;
+    NSMutableURLRequest *requestXML = [[NSMutableURLRequest alloc] initWithURL:url];
+    NSData *data = [NSURLConnection sendSynchronousRequest:requestXML returningResponse:nil error:&error];
+    if (data == nil) {
+        return NO;
+    }
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+
     [parser setDelegate:self];
     info = dictionary;
     feeds = nil;
@@ -99,6 +109,12 @@
 }
 
 - (BOOL)newsURL:(NSURL *)url News:(NSMutableDictionary *)dictionary {
+    NSError *error = nil;
+    NSMutableURLRequest *requestXML = [[NSMutableURLRequest alloc] initWithURL:url];
+    NSData *data = [NSURLConnection sendSynchronousRequest:requestXML returningResponse:nil error:&error];
+    if (data == nil) {
+        return NO;
+    }
     NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
     [parser setDelegate:self];
     info = nil;

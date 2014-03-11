@@ -8,20 +8,20 @@
 
 #import "RSSMasterViewController.h"
 
-#import "RSSDetailViewController.h"
 #import "RSSTitlesController.h"
 #import "RSSService.h"
-#import "Notify.h"
+#import "Config.h"
 
 @interface RSSMasterViewController () {
-    NSMutableArray *_rssURLS;
-    NSMutableArray *_rssTitles;
+//    NSMutableArray *_rssURLS;
+//    NSMutableArray *_rssTitles;
     RSSService *_rssService;
 }
 @end
 
 @implementation RSSMasterViewController {
     UIAlertView *alert;
+    UIActivityIndicatorView *activity;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,27 +38,41 @@
 {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                               target:self
+                                                                               action:@selector(insertNewObject:)];
+    UIActivityIndicatorView *av = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [av startAnimating];
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
-    [self addFeed:@"http://images.apple.com/main/rss/hotnews/hotnews.rss"];
+//    [self.navigationItem.titleView addSubview:av];
+
+
+
+    //[self addFeed:@"http://images.apple.com/main/rss/hotnews/hotnews.rss"];
 
 }
 
-- (void)addFeed:(NSString *)url {
-    if (!_rssURLS) {
-        _rssURLS = [[NSMutableArray alloc] init];
-        _rssTitles = [[NSMutableArray alloc] init];
+- (BOOL)addFeed:(NSString *)url {
+    Config *cfg = [Config instance];
+    NSMutableArray *items = cfg.items;
+    NSURL *nsUrl = [NSURL URLWithString:url];
+    NSMutableDictionary *elem = [NSMutableDictionary new];
+    [elem setObject:url forKey:@"url"];
+    NSMutableDictionary *info = [NSMutableDictionary new];
+    BOOL res = [_rssService feedInfoURL:nsUrl Info:info];
+    if (!res) {
+        return NO;
     }
-    [_rssURLS insertObject:[NSURL URLWithString:url] atIndex:0];
-    NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
-    [_rssService feedInfoURL:[_rssURLS objectAtIndex:0] Info:info];
-    [_rssTitles insertObject:[info valueForKey:@"title"] atIndex:0];
+    [elem setObject:[info valueForKey:@"title"] forKey:@"title"];
+    [items insertObject:elem atIndex:0];
+    [cfg write];
+    return YES;
 }
 
 - (void)removeFeed:(NSUInteger)num {
-    [_rssURLS removeObjectAtIndex:num];
-    [_rssTitles removeObjectAtIndex:num];
+    Config *cfg = [Config instance];
+    [cfg.items removeObjectAtIndex:num];
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,7 +89,24 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)text {
-    [self addFeed:[[alert textFieldAtIndex:0] text]];
+    [alert dismissWithClickedButtonIndex:0 animated:NO];
+    activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview: activity];
+    activity.center = CGPointMake(240,160);
+    [activity startAnimating];
+    if (![self addFeed:[[alert textFieldAtIndex:0] text]]) {
+        [activity stopAnimating];
+        [activity removeFromSuperview];
+
+        alert = [[UIAlertView alloc] initWithTitle:@"RSS Feed" message:@"Cannot add rss feed" delegate:nil
+                                 cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        alert.alertViewStyle = UIAlertViewStyleDefault;
+        [alert show];
+        return;
+    }
+    [activity stopAnimating];
+    [activity removeFromSuperview];
+
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -90,37 +121,37 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _rssURLS.count;
-
+    return [Config instance].items.count;
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        UIActivityIndicatorView *av = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//        [av startAnimating];
+//        cell.accessoryView = av;
     }
 
     cell.textLabel.font = [UIFont systemFontOfSize:14];
-    cell.textLabel.text = _rssTitles[indexPath.row];
-
+    cell.textLabel.text = [[Config instance].items[(NSUInteger) indexPath.row] valueForKey:@"title"];
     return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self removeFeed:indexPath.row];
+        [self removeFeed:(NSUInteger) indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -134,9 +165,11 @@
     if (!self.rssTitlesController) {
         self.rssTitlesController = [[RSSTitlesController alloc] initWithNibName:@"RSSTitlesController" bundle:nil];
     }
-    NSString *object = _rssURLS[indexPath.row];
-    self.rssTitlesController.detailItem = object;
+    NSURL *url = [NSURL URLWithString:
+    [[Config instance].items[(NSUInteger) indexPath.row] valueForKey:@"url"]];
+    self.rssTitlesController.detailItem = url;
     [self.navigationController pushViewController:self.rssTitlesController animated:YES];
+
     [self.rssTitlesController reload];
 }
 

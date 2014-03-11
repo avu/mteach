@@ -7,49 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17AE0052AFF325B31A906149 /* PListService.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE04971809BC53A29D776A /* PListService.m */; };
 		17AE01A2F643F55B4C3EA188 /* RSSMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE04AFEE675ED2AA507DD8 /* RSSMasterViewController.m */; };
 		17AE01C91FEBCEC7D668E30D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17AE018774012FD403AA0F43 /* InfoPlist.strings */; };
+		17AE0266366B41829B0AFBC9 /* TitleTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE08080B97D3B32E3B16FD /* TitleTableCell.m */; };
 		17AE02F50547102D0ECA858E /* RSSTitlesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AE04175E240BE7BD81E71E /* RSSTitlesController.xib */; };
 		17AE067BEA878F3C9B81BC12 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE003F292F9D8288AEF3DD /* UIKit.framework */; };
 		17AE06B0B1984B6CC91E4671 /* RSSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE09974ABFFD6699C3A92E /* RSSDetailViewController.m */; };
 		17AE0754024CF589B08F0F7F /* RSSDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AE0ABB4CAFD1F9330C30FE /* RSSDetailViewController.xib */; };
 		17AE07D7215386E12F341489 /* RSSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE07131ECEEFF31EA9260E /* RSSService.m */; };
 		17AE07D8924DAA71E2052D62 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17AE0968899F1835954DAA37 /* Default@2x.png */; };
+		17AE0865BDB1E925EDF506BA /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17AE049C79477DB19E6F9B6E /* Config.plist */; };
 		17AE086E4F3BDC707665A61C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE05735CD2BBDD3A0DBF70 /* Foundation.framework */; };
+		17AE09385984414AD76539E4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17AE08E92903A5E3E5F7FBF4 /* Localizable.strings */; };
 		17AE09FFB1DDFD8C1DDE8F7A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17AE0B4BDAE9BB808DD14A77 /* Default-568h@2x.png */; };
 		17AE0AF86E7C0EAA7F275830 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE08A8FF7B16F17CF91F3A /* main.m */; };
+		17AE0B83DCFF3109B9C1D1BA /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE0B7A498F3B18463F329D /* Config.m */; };
 		17AE0BBF0DDFC65BF8FDD1BE /* RSSTitlesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE08FBD4D5FEBD21477FA4 /* RSSTitlesController.m */; };
 		17AE0BC1200FD93276049FBC /* RSSMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AE0835E2B5490E3CC70C63 /* RSSMasterViewController.xib */; };
 		17AE0BE2A3DE6071DF8483D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE068C286ED86EEC2822D4 /* CoreGraphics.framework */; };
 		17AE0E520D7AB4A51C38E926 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 17AE086E44739101E7F2C259 /* Default.png */; };
 		17AE0FADF16F94C409385EA5 /* RSSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE079C794FA1D8C443C930 /* RSSAppDelegate.m */; };
+		F23ED88F18CE5565001D6C60 /* TitleTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23ED88E18CE5565001D6C60 /* TitleTableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		17AE003F292F9D8288AEF3DD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		17AE04175E240BE7BD81E71E /* RSSTitlesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RSSTitlesController.xib; sourceTree = "<group>"; };
+		17AE04971809BC53A29D776A /* PListService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PListService.m; sourceTree = "<group>"; };
+		17AE049C79477DB19E6F9B6E /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Config.plist; sourceTree = "<group>"; };
 		17AE04AFEE675ED2AA507DD8 /* RSSMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSMasterViewController.m; sourceTree = "<group>"; };
 		17AE052D873BE5FBE820C224 /* MobiusRSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobiusRSS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17AE05609B0D2926DDBE4D42 /* PListService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PListService.h; sourceTree = "<group>"; };
 		17AE05735CD2BBDD3A0DBF70 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		17AE0591A47B9FA82A5DACE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RSSDetailViewController.xib; sourceTree = "<group>"; };
 		17AE068C286ED86EEC2822D4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		17AE07131ECEEFF31EA9260E /* RSSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSService.m; sourceTree = "<group>"; };
 		17AE075329CF0311F48326D6 /* RSSMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSMasterViewController.h; sourceTree = "<group>"; };
 		17AE079C794FA1D8C443C930 /* RSSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSAppDelegate.m; sourceTree = "<group>"; };
+		17AE08080B97D3B32E3B16FD /* TitleTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleTableCell.m; sourceTree = "<group>"; };
 		17AE086E44739101E7F2C259 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		17AE08A8FF7B16F17CF91F3A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		17AE08D216FDD11F34E586BC /* RSSDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSDetailViewController.h; sourceTree = "<group>"; };
+		17AE08E2A05327A16B072DAB /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		17AE08E92903A5E3E5F7FBF4 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		17AE08FBD4D5FEBD21477FA4 /* RSSTitlesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSTitlesController.m; sourceTree = "<group>"; };
 		17AE0968899F1835954DAA37 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		17AE098BB1DF903D6A5F9AB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		17AE09974ABFFD6699C3A92E /* RSSDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSDetailViewController.m; sourceTree = "<group>"; };
 		17AE09EFD8F54C41DA6570F6 /* RSSTitlesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSTitlesController.h; sourceTree = "<group>"; };
 		17AE0AE2E16276A0A9E3575D /* MobiusRSS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobiusRSS-Prefix.pch"; sourceTree = "<group>"; };
+		17AE0AEB9EBA4A62620A5404 /* TitleTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleTableCell.h; sourceTree = "<group>"; };
 		17AE0B4BDAE9BB808DD14A77 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		17AE0B7A498F3B18463F329D /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		17AE0BC52EECFE8ACF908575 /* RSSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSService.h; sourceTree = "<group>"; };
 		17AE0CAB046088C55EE7BB9F /* RSSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSAppDelegate.h; sourceTree = "<group>"; };
 		17AE0DC1760468D74528816D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RSSMasterViewController.xib; sourceTree = "<group>"; };
 		17AE0F5CE126F585854ED3A6 /* MobiusRSS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = "MobiusRSS-Info.plist"; sourceTree = "<group>"; };
+		F23ED88E18CE5565001D6C60 /* TitleTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleTableCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				17AE052D873BE5FBE820C224 /* MobiusRSS.app */,
+				17AE049C79477DB19E6F9B6E /* Config.plist */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,6 +140,14 @@
 				17AE09EFD8F54C41DA6570F6 /* RSSTitlesController.h */,
 				17AE07131ECEEFF31EA9260E /* RSSService.m */,
 				17AE0BC52EECFE8ACF908575 /* RSSService.h */,
+				17AE08E92903A5E3E5F7FBF4 /* Localizable.strings */,
+				17AE0B7A498F3B18463F329D /* Config.m */,
+				17AE08E2A05327A16B072DAB /* Config.h */,
+				17AE04971809BC53A29D776A /* PListService.m */,
+				17AE05609B0D2926DDBE4D42 /* PListService.h */,
+				17AE0AEB9EBA4A62620A5404 /* TitleTableCell.h */,
+				17AE08080B97D3B32E3B16FD /* TitleTableCell.m */,
+				F23ED88E18CE5565001D6C60 /* TitleTableCell.xib */,
 			);
 			path = MobiusRSS;
 			sourceTree = "<group>";
@@ -179,12 +203,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				17AE01C91FEBCEC7D668E30D /* InfoPlist.strings in Resources */,
+				F23ED88F18CE5565001D6C60 /* TitleTableCell.xib in Resources */,
 				17AE0E520D7AB4A51C38E926 /* Default.png in Resources */,
 				17AE07D8924DAA71E2052D62 /* Default@2x.png in Resources */,
 				17AE09FFB1DDFD8C1DDE8F7A /* Default-568h@2x.png in Resources */,
 				17AE0BC1200FD93276049FBC /* RSSMasterViewController.xib in Resources */,
 				17AE0754024CF589B08F0F7F /* RSSDetailViewController.xib in Resources */,
 				17AE02F50547102D0ECA858E /* RSSTitlesController.xib in Resources */,
+				17AE09385984414AD76539E4 /* Localizable.strings in Resources */,
+				17AE0865BDB1E925EDF506BA /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +228,9 @@
 				17AE06B0B1984B6CC91E4671 /* RSSDetailViewController.m in Sources */,
 				17AE0BBF0DDFC65BF8FDD1BE /* RSSTitlesController.m in Sources */,
 				17AE07D7215386E12F341489 /* RSSService.m in Sources */,
+				17AE0B83DCFF3109B9C1D1BA /* Config.m in Sources */,
+				17AE0052AFF325B31A906149 /* PListService.m in Sources */,
+				17AE0266366B41829B0AFBC9 /* TitleTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +326,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobiusRSS/MobiusRSS-Prefix.pch";
 				INFOPLIST_FILE = "MobiusRSS/MobiusRSS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -307,6 +338,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobiusRSS/MobiusRSS-Prefix.pch";
 				INFOPLIST_FILE = "MobiusRSS/MobiusRSS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -322,6 +354,7 @@
 				17AE0B8E5B7F9747A90FCC6D /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17AE0EE2B8D65153747DACEE /* Build configuration list for PBXProject "MobiusRSS" */ = {
 			isa = XCConfigurationList;

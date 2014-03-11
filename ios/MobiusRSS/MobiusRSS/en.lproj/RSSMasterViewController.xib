@@ -51,7 +51,7 @@
 							<integer value="1"/>
 							<integer value="3"/>
 						</array>
-						<array key="dict.values">
+						<array key="dict.items">
 							<string>{320, 568}</string>
 							<string>{568, 320}</string>
 						</array>
