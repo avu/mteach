@@ -16,7 +16,6 @@
 @end
 
 @implementation RSSMasterViewController {
-    UIAlertView *alert;
     UIActivityIndicatorView *_activityIndicatorView;
 }
 
@@ -53,16 +52,13 @@
 
 - (void)insertNewObject:(id)sender
 {
-    alert = [Chrome alertViewTitle:@"RSS Feed" message:@"Input rss feed" delegate:self];
+    [Chrome alertViewTitle:@"RSS Feed" message:@"Input rss feed" delegate:self];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)text {
-
-    [alert dismissWithClickedButtonIndex:0 animated:NO];
-
     _activityIndicatorView = [Chrome activityIndicatorForView:self.view.superview];
 
-    if (![[Config instance] addFeed:[[alert textFieldAtIndex:0] text]]) {
+    if (![[Config instance] addFeed:[[alertView textFieldAtIndex:0] text]]) {
         [Chrome alertViewTitle:@"RSS Feed" message:@"Cannot add rss feed" delegate:nil];
         [_activityIndicatorView removeFromSuperview];
         return;

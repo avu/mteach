@@ -24,10 +24,9 @@
 + (UIAlertView *)alertViewTitle:(NSString *)title message:(NSString *)msg delegate:(id <UIAlertViewDelegate>)dlg {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:dlg
                              cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alert.alertViewStyle = (dlg) ? UIAlertViewStylePlainTextInput : UIAlertViewStyleDefault;
     [alert show];
     return alert;
 }
-
 
 @end
