@@ -12,4 +12,6 @@
 -(BOOL)feedInfoURL:(NSString *)url Info:(NSMutableDictionary *)dictionary;
 -(BOOL)newsURL:(NSString *)url News:(NSMutableArray *)dictionary;
 
++(NSString *)formatDate:(NSString *)rawDate;
+
 @end

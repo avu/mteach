@@ -86,6 +86,31 @@
     parseFailed = YES;
 }
 
++ (NSString *)formatDate:(NSString *)rawDate {
+    // Supported formats:
+    // "pubDate" -> "11 Mar 2014 00:02:22 +0400"
+    // "pubDate" -> "Wed, 12 Feb 2014 23:30:00 +0400"
+
+    NSArray *formats = @[@"dd MMM yyyy HH:mm:ss Z", @"EEE, dd MMM yyyy HH:mm:ss Z"];
+
+    rawDate = [rawDate componentsSeparatedByString:@"\n"][0];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeZone:[NSTimeZone localTimeZone]];
+    NSDate *date = nil;
+    for (NSString *f in formats) {
+        [formatter setDateFormat:f];
+        date = [formatter dateFromString:rawDate];
+        if (date) break;
+    }
+
+    if (date) {
+        [formatter setDateFormat:@"HH:mm dd.MM.yyyy "];
+        return [formatter stringFromDate:date];
+    }
+    NSLog(@"\"%@\" format is not supported", rawDate);
+    return @"";
+}
+
 - (BOOL)feedInfoURL:(NSString *)url Info:(NSMutableDictionary *)dictionary {
     NSError *error = nil;
     NSMutableURLRequest *requestXML = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString: url]];
