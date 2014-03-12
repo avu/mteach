@@ -26,6 +26,7 @@
 		17AE0BBF0DDFC65BF8FDD1BE /* RSSTitlesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE08FBD4D5FEBD21477FA4 /* RSSTitlesController.m */; };
 		17AE0BC1200FD93276049FBC /* RSSMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AE0835E2B5490E3CC70C63 /* RSSMasterViewController.xib */; };
 		17AE0BE2A3DE6071DF8483D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE068C286ED86EEC2822D4 /* CoreGraphics.framework */; };
+		17AE0D9E52416FDFA058E540 /* Chrome.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE03AB82139FE6892C21C6 /* Chrome.m */; };
 		17AE0E520D7AB4A51C38E926 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 17AE086E44739101E7F2C259 /* Default.png */; };
 		17AE0FADF16F94C409385EA5 /* RSSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AE079C794FA1D8C443C930 /* RSSAppDelegate.m */; };
 		F23ED88F18CE5565001D6C60 /* TitleTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23ED88E18CE5565001D6C60 /* TitleTableCell.xib */; };
@@ -33,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		17AE003F292F9D8288AEF3DD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		17AE02E58C189BBFE34E0D4F /* Chrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chrome.h; sourceTree = "<group>"; };
+		17AE03AB82139FE6892C21C6 /* Chrome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chrome.m; sourceTree = "<group>"; };
 		17AE04175E240BE7BD81E71E /* RSSTitlesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RSSTitlesController.xib; sourceTree = "<group>"; };
 		17AE04971809BC53A29D776A /* PListService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PListService.m; sourceTree = "<group>"; };
 		17AE049C79477DB19E6F9B6E /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Config.plist; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				17AE0AEB9EBA4A62620A5404 /* TitleTableCell.h */,
 				17AE08080B97D3B32E3B16FD /* TitleTableCell.m */,
 				F23ED88E18CE5565001D6C60 /* TitleTableCell.xib */,
+				17AE03AB82139FE6892C21C6 /* Chrome.m */,
+				17AE02E58C189BBFE34E0D4F /* Chrome.h */,
 			);
 			path = MobiusRSS;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 				17AE0B83DCFF3109B9C1D1BA /* Config.m in Sources */,
 				17AE0052AFF325B31A906149 /* PListService.m in Sources */,
 				17AE0266366B41829B0AFBC9 /* TitleTableCell.m in Sources */,
+				17AE0D9E52416FDFA058E540 /* Chrome.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

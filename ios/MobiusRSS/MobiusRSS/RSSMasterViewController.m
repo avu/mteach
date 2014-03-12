@@ -10,6 +10,7 @@
 
 #import "RSSTitlesController.h"
 #import "Config.h"
+#import "Chrome.h"
 
 @interface RSSMasterViewController ()
 @end
@@ -52,27 +53,17 @@
 
 - (void)insertNewObject:(id)sender
 {
-
-    alert = [[UIAlertView alloc] initWithTitle:@"RSS Feed" message:@"Input rss feed" delegate:self                                          cancelButtonTitle:@"Done" otherButtonTitles:nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alert show];
-
+    alert = [Chrome alertViewTitle:@"RSS Feed" message:@"Input rss feed" delegate:self];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)text {
 
     [alert dismissWithClickedButtonIndex:0 animated:NO];
 
-    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    CGSize size = self.view.superview.frame.size;
-    _activityIndicatorView.center = CGPointMake(size.width/2.0, size.height/2.0);
-    [self.view.superview addSubview:_activityIndicatorView];
-    [_activityIndicatorView startAnimating];
+    _activityIndicatorView = [Chrome activityIndicatorForView:self.view.superview];
+
     if (![[Config instance] addFeed:[[alert textFieldAtIndex:0] text]]) {
-        alert = [[UIAlertView alloc] initWithTitle:@"RSS Feed" message:@"Cannot add rss feed" delegate:nil
-                                 cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        alert.alertViewStyle = UIAlertViewStyleDefault;
-        [alert show];
+        [Chrome alertViewTitle:@"RSS Feed" message:@"Cannot add rss feed" delegate:nil];
         [_activityIndicatorView removeFromSuperview];
         return;
     }
@@ -132,11 +123,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     self.rssTitlesController.detailItem = [[Config instance].items[(NSUInteger) indexPath.row] valueForKey:@"url"];
 
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc]
-            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-
-    [activityIndicatorView startAnimating];
-    cell.accessoryView = activityIndicatorView;
+    cell.accessoryView = [Chrome activityIndicatorForView:nil];
 
     dispatch_queue_t loadQueue = dispatch_queue_create("Load Queue",NULL);
 
